@@ -2,8 +2,12 @@
 	import reasons from '$lib/reasons.json';
 	let reason = $state('');
 
-	$effect(() => {
+	function pickRandomReason() {
 		reason = reasons[Math.floor(Math.random() * reasons.length)];
+	}
+
+	$effect(() => {
+		pickRandomReason();
 	});
 </script>
 
@@ -17,7 +21,9 @@
 </svelte:head>
 
 <main>
-	<p class="reason-text">{reason}</p>
+	<button class="reason-btn" onclick={pickRandomReason} aria-label="Show another reason">
+		<span class="reason-text">{reason}</span>
+	</button>
 </main>
 
 <a
@@ -51,6 +57,25 @@
 		box-sizing: border-box;
 	}
 
+	.reason-btn {
+		display: flex;
+		flex: 1;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		border: none;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+		outline: none;
+	}
+	.reason-btn:focus-visible {
+		outline: 2px solid #222;
+		outline-offset: 4px;
+	}
+
 	.reason-text {
 		font-size: clamp(2rem, 5vw, 4rem);
 		font-weight: 500;
@@ -59,6 +84,7 @@
 		color: #222;
 		line-height: 1.2;
 		word-break: break-word;
+		pointer-events: none;
 	}
 
 	.credit-link {
