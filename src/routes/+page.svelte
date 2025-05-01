@@ -32,7 +32,7 @@
 	target="_blank"
 	rel="noopener noreferrer"
 >
-	Built with no-as-a-service
+	Lazily built with no-as-a-service
 </a>
 
 <style>
@@ -84,7 +84,7 @@
 		color: #222;
 		line-height: 1.2;
 		word-break: break-word;
-		pointer-events: none;
+		padding: 0 2rem;
 	}
 
 	.credit-link {
