@@ -1,16 +1,14 @@
 <script>
-	import { getRandomReason } from '$lib';
-	import { onMount } from 'svelte';
+	import reasons from '$lib/reasons.json';
+	let reason = $state('');
 
-	let reason = '';
-
-	onMount(() => {
-		reason = getRandomReason();
+	$effect(() => {
+		reason = reasons[Math.floor(Math.random() * reasons.length)];
 	});
 </script>
 
 <svelte:head>
-	<title>No</title>
+	<title>no</title>
 	<link
 		rel="icon"
 		type="image/svg+xml"
@@ -18,7 +16,7 @@
 	/>
 </svelte:head>
 
-<main class="fullscreen-center">
+<main>
 	<p class="reason-text">{reason}</p>
 </main>
 
@@ -28,22 +26,29 @@
 	target="_blank"
 	rel="noopener noreferrer"
 >
-	Lovingly ripped off from no-as-a-service
+	Built with no-as-a-service
 </a>
 
 <style>
 	:global(html, body) {
+		margin: 0;
+		padding: 0;
 		overflow: hidden;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
 	}
 
-	.fullscreen-center {
-		min-height: 100vh;
+	main {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		background: #fafbfc;
-		padding: 2rem;
+		height: 100vh;
+		width: 100vw;
+		border: 2rem solid white;
+		box-sizing: border-box;
 	}
 
 	.reason-text {
@@ -58,12 +63,12 @@
 
 	.credit-link {
 		position: fixed;
-		bottom: 1.5rem;
+		bottom: 0.5rem;
 		left: 0;
 		right: 0;
 		text-align: center;
 		color: #888;
-		font-size: 1rem;
+		font-size: 0.875rem;
 		text-decoration: none;
 		opacity: 0.7;
 		transition: opacity 0.2s;
