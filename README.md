@@ -1,38 +1,50 @@
-# sv
+# no
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A SvelteKit app that gives you a random, lovingly-crafted "no" reason, inspired by [no-as-a-service](https://github.com/hotheadhacker/no-as-a-service).
 
-## Creating a project
+## 🛠️ Development
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
 ```
 
-## Building
-
-To create a production version of your app:
+Start the development server:
 
 ```bash
-npm run build
+pnpm dev
 ```
 
-You can preview the production build with `npm run preview`.
+Open [localhost:5173](http://localhost:5173) to view the app.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## 🚀 Building
+
+To create a production build:
+
+```bash
+pnpm build
+```
+
+Preview the production build locally:
+
+```bash
+pnpm preview
+```
+
+## ☁️ Deploying to Cloudflare Pages
+
+1. **Push your code to GitHub or GitLab.**
+2. **Go to [Cloudflare Pages](https://pages.cloudflare.com/) and create a new project.**
+3. **Set the following build settings:**
+   - **Framework preset:** SvelteKit
+   - **Build command:** `pnpm build`
+   - **Build output directory:** `.svelte-kit/cloudflare`
+   - **Install command:** `pnpm install`
+4. **Deploy!**
+
+> This project uses [`@sveltejs/adapter-cloudflare`](https://kit.svelte.dev/docs/adapter-cloudflare) for seamless Cloudflare deployment.
+
+## 📝 Credits
+
+Lovingly ripped off from [no-as-a-service](https://github.com/hotheadhacker/no-as-a-service).
